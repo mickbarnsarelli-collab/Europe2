@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Europe Winter Adventure 2026–27</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --cream: #f5f0e8;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --red: #c0392b;
+    --blue: #2c5f8a;
+    --frost: #e8f4f8;
+    --green: #2d6a4f;
+    --purple: #6b3a8c;
+    --warm: #8b4513;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 20% 50%, #1a3a5c 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, #3d1a5c 0%, transparent 50%),
+                radial-gradient(ellipse at 60% 80%, #1a3d2a 0%, transparent 50%),
+                var(--ink);
+  }
+
+  .stars {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 60%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 40% 10%, rgba(255,255,255,0.9) 0%, transparent 100%),
+      radial-gradient(1px 1px at 55% 40%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 75%, rgba(255,255,255,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 85% 30%, rgba(255,255,255,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 15% 85%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 92% 55%, rgba(255,255,255,0.9) 0%, transparent 100%),
+      radial-gradient(2px 2px at 33% 33%, rgba(201,168,76,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 78% 88%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 70%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 5% 50%, rgba(255,255,255,0.7) 0%, transparent 100%);
+  }
+
+  .aurora {
+    position: absolute;
+    top: 0; left: -20%; right: -20%;
+    height: 60%;
+    background: linear-gradient(180deg,
+      rgba(0,255,150,0.08) 0%,
+      rgba(0,200,255,0.06) 40%,
+      rgba(150,0,255,0.04) 70%,
+      transparent 100%);
+    animation: aurora-wave 8s ease-in-out infinite alternate;
+    filter: blur(20px);
+  }
+
+  @keyframes aurora-wave {
+    0% { transform: skewY(-2deg) translateY(-10px); opacity: 0.6; }
+    100% { transform: skewY(2deg) translateY(10px); opacity: 1; }
+  }
+
+  .hero-content { position: relative; z-index: 1; }
+
+  .trip-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 900;
+    line-height: 0.9;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+    display: block;
+  }
+
+  .hero-dates {
+    font-size: 14px;
+    letter-spacing: 2px;
+    opacity: 0;
+    color: var(--gold-light);
+    margin-bottom: 40px;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .hero-tags {
+    display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+    margin-bottom: 50px;
+  }
+
+  .tag {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.5;
+    animation: fadeUp 1s 1.2s forwards;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scroll-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scroll-pulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(26,26,46,0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    padding: 0 20px;
+    overflow-x: auto;
+  }
+
+  .nav-inner {
+    display: flex;
+    gap: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    white-space: nowrap;
+  }
+
+  .nav-btn {
+    background: none;
+    border: none;
+    color: rgba(245,240,232,0.6);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    padding: 16px 18px;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s;
+    white-space: nowrap;
+  }
+
+  .nav-btn:hover, .nav-btn.active {
+    color: var(--gold);
+  }
+
+  .nav-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  /* MAIN */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px;
+  }
+
+  /* OVERVIEW STATS */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1px;
+    background: rgba(201,168,76,0.2);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 60px;
+  }
+
+  .stat {
+    background: rgba(255,255,255,0.03);
+    padding: 28px 24px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-top: 4px;
+  }
+
+  /* SECTION */
+  section {
+    display: none;
+  }
+
+  section.active {
+    display: block;
+    animation: fadeIn 0.4s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .section-sub {
+    opacity: 0.5;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+  }
+
+  /* TIMELINE / DESTINATION CARDS */
+  .dest-grid {
+    display: grid;
+    gap: 24px;
+  }
+
+  .dest-card {
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.03);
+    cursor: pointer;
+    transition: border-color 0.3s, transform 0.2s;
+  }
+
+  .dest-card:hover {
+    border-color: rgba(201,168,76,0.4);
+    transform: translateY(-2px);
+  }
+
+  .dest-header {
+    display: flex;
+    align-items: center;
+    padding: 24px 28px;
+    gap: 20px;
+  }
+
+  .dest-icon {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .dest-meta h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+
+  .dest-dates {
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-top: 2px;
+  }
+
+  .dest-nights {
+    margin-left: auto;
+    text-align: right;
+    opacity: 0.5;
+    font-size: 13px;
+  }
+
+  .dest-body {
+    padding: 0 28px 28px;
+  }
+
+  .day-list {
+    display: grid;
+    gap: 10px;
+  }
+
+  .day-row {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .day-label {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding-top: 2px;
+    font-weight: 500;
+  }
+
+  .day-activities {
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.8;
+  }
+
+  .activity-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.06);
+    border-radius: 4px;
+    padding: 1px 8px;
+    margin: 2px 2px;
+    font-size: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .transport-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(44,95,138,0.3);
+    border: 1px solid rgba(44,95,138,0.5);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    color: #7ab8e0;
+    margin: 8px 0;
+  }
+
+  .stay-info {
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: rgba(201,168,76,0.06);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+  }
+
+  .stay-info span { color: var(--gold); font-weight: 500; }
+
+  /* COLOR THEMES */
+  .card-stockholm .dest-icon { background: rgba(44,95,138,0.3); }
+  .card-kiruna .dest-icon { background: rgba(45,106,79,0.3); }
+  .card-copenhagen .dest-icon { background: rgba(192,57,43,0.3); }
+  .card-munich .dest-icon { background: rgba(139,69,19,0.3); }
+  .card-innsbruck .dest-icon { background: rgba(107,58,140,0.3); }
+  .card-paris .dest-icon { background: rgba(201,168,76,0.3); }
+  .card-bruges .dest-icon { background: rgba(45,106,79,0.3); }
+  .card-london .dest-icon { background: rgba(192,57,43,0.3); }
+
+  /* FOOD SECTION */
+  .food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .food-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .food-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+    color: var(--gold-light);
+  }
+
+  .food-city {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.4;
+    margin-bottom: 14px;
+  }
+
+  .food-list { list-style: none; }
+
+  .food-list li {
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 14px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .food-list li:last-child { border: none; }
+
+  .food-emoji { flex-shrink: 0; }
+
+  .food-detail {
+    opacity: 0.6;
+    font-size: 12px;
+  }
+
+  /* TRANSPORT */
+  .transport-grid {
+    display: grid;
+    gap: 16px;
+  }
+
+  .transport-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 20px 24px;
+    display: grid;
+    grid-template-columns: 50px 1fr auto;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .transport-icon {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .transport-route { font-weight: 500; }
+  .transport-info { font-size: 13px; opacity: 0.6; margin-top: 2px; }
+  .transport-tip {
+    font-size: 12px;
+    background: rgba(44,95,138,0.2);
+    border: 1px solid rgba(44,95,138,0.3);
+    padding: 4px 10px;
+    border-radius: 20px;
+    color: #7ab8e0;
+    white-space: nowrap;
+  }
+
+  /* BUDGET */
+  .budget-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  @media (max-width: 700px) {
+    .budget-section { grid-template-columns: 1fr; }
+  }
+
+  .budget-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .budget-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    color: var(--gold-light);
+  }
+
+  .budget-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 14px;
+  }
+
+  .budget-row:last-child { border: none; }
+  .budget-row .amount { color: var(--gold); font-weight: 500; }
+
+  .budget-total {
+    margin-top: 12px;
+    padding: 12px 0;
+    border-top: 1px solid rgba(201,168,76,0.3);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+  }
+
+  .budget-total .amount { color: var(--gold); }
+
+  /* TIPS */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .tip-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .tip-card h3 {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: var(--gold);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    font-size: 11px;
+  }
+
+  .tip-card p { font-size: 14px; line-height: 1.7; opacity: 0.8; }
+
+  /* DIVIDER */
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 0 40px;
+    opacity: 0.4;
+  }
+
+  /* PACKING */
+  .packing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .pack-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .pack-card h3 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .pack-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    font-size: 14px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .pack-item:last-child { border: none; }
+
+  .pack-check {
+    width: 16px; height: 16px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 3px;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px;
+    transition: all 0.2s;
+  }
+
+  .pack-item.packed .pack-check {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--ink);
+  }
+
+  .pack-item.packed .pack-text {
+    opacity: 0.4;
+    text-decoration: line-through;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 60px 20px;
+    opacity: 0.3;
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .day-row { grid-template-columns: 60px 1fr; }
+    .transport-card { grid-template-columns: 40px 1fr; }
+    .transport-tip { display: none; }
+    .dest-header { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="stars"></div>
+  <div class="aurora"></div>
+  <div class="hero-content">
+    <p class="trip-label">Family Adventure · 2 Adults + 1 Child (12)</p>
+    <h1>Europe<em>Winter</em></h1>
+    <p class="hero-dates">14 December 2026 — 14 January 2027 · 31 Nights</p>
+    <div class="hero-tags">
+      <span class="tag">🇸🇪 Stockholm</span>
+      <span class="tag">❄️ Kiruna</span>
+      <span class="tag">🇩🇰 Copenhagen</span>
+      <span class="tag">🇩🇪 Munich</span>
+      <span class="tag">🇦🇹 Innsbruck</span>
+      <span class="tag">🇫🇷 Paris</span>
+      <span class="tag">🇧🇪 Bruges</span>
+      <span class="tag">🇬🇧 London</span>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Explore</span>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="showSection('overview')">Overview</button>
+    <button class="nav-btn" onclick="showSection('itinerary')">Itinerary</button>
+    <button class="nav-btn" onclick="showSection('food')">Food & Drink</button>
+    <button class="nav-btn" onclick="showSection('transport')">Transport</button>
+    <button class="nav-btn" onclick="showSection('budget')">Budget</button>
+    <button class="nav-btn" onclick="showSection('packing')">Packing</button>
+    <button class="nav-btn" onclick="showSection('tips')">Tips</button>
+  </div>
+</nav>
+
+<main>
+
+  <!-- OVERVIEW -->
+  <section id="overview" class="active">
+    <p class="trip-label">Your Journey at a Glance</p>
+    <h2 class="section-title">31 Nights Across 8 Cities</h2>
+    <div class="divider"></div>
+
+    <div class="stats-grid">
+      <div class="stat">
+        <span class="stat-num">8</span>
+        <span class="stat-label">Cities</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">31</span>
+        <span class="stat-label">Nights</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Flights</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">5</span>
+        <span class="stat-label">Train Journeys</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">2</span>
+        <span class="stat-label">Ski Days</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">NYE</span>
+        <span class="stat-label">In Paris 🎉</span>
+      </div>
+    </div>
+
+    <div class="dest-grid">
+      <div class="dest-card" style="background: linear-gradient(135deg, rgba(44,95,138,0.15), rgba(255,255,255,0.03))">
+        <div class="dest-header">
+          <div class="dest-icon card-stockholm" style="background: rgba(44,95,138,0.3)">🇸🇪</div>
+          <div class="dest-meta">
+            <h3>Stockholm</h3>
+            <div class="dest-dates">Dec 15–16</div>
+          </div>
+          <div class="dest-nights">2 nights<br><small style="opacity:0.5">STF Zinkensdamm Hostel</small></div>
+        </div>
+      </div>
+      <div class="dest-card" style="background: linear-gradient(135deg, rgba(45,106,79,0.15), rgba(255,255,255,0.03))">
+        <div class="dest-header">
+          <div class="dest-icon card-kiruna" style="background: rgba(45,106,79,0.3)">❄️</div>
+          <div class="dest-meta">
+            <h3>Kiruna</h3>
+            <div class="dest-dates">Dec 17–19</div>
+          </div>
+          <div class="dest-nights">3 nights<br><small style="opacity:0.5">STF Malmfältens Folkhögskola</small></div>
+        </div>
+      </div>
+      <div class="dest-card" style="background: linear-gradient(135deg, rgba(192,57,43,0.15), rgba(255,255,255,0.03))">
+        <div class="dest-header">
+          <div class="dest-icon card-copenhagen" style="background: rgba(192,57,43,0.3)">🇩🇰</div>
+          <div class="dest-meta">
+            <h3>Copenhagen</h3>
+            <div class="dest-dates">Dec 20–22</div>
+          </div>
+          <div class="dest-nights">3 nights<br><small style="opacity:0.5">Danhostel Copenhagen City</small></div>
+        </div>
+      </div>
+      <div class="dest-card" style="background: linear-gradient(135deg, rgba(139,69,19,0.15), rgba(255,255,255,0.03))">
+        <div class="dest-header">
+          <div class="dest-icon card-munich" style="background: rgba(139,69,19,0.3)">🇩🇪</div>
+          <div class="dest-meta">
+            <h3>Munich</h3>
+            <div class="dest-dates">Dec 23–25</div>
+          </div>
+          <div class="dest-nights">3 nights<br><small style="opacity:0.5">Premier Inn München City Zentrum</small></div>
+        </div>
+      </div>
+      <div class="dest-card" style="background: linear-gradient(135deg, rgba(107,58,140,0.15), rgba(255,255,255,0.03))">
+        <div class="dest-header">
+          <div class="dest-icon card-innsbruck" style="background: rgba(107,58,140,0.3)">🎿</div>
+          <div class="dest-meta">
+            <h3>Innsbruck</h3>
+            <div class="dest-dates">Dec 26–28</div>
+          </div>
+          <div class="dest-nights">3 nights<br><small style="opacity:0.5">TBC</small></div>
+        </div>
+      </div>
+      <div class="dest-card" style="background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(255,255,255,0.03))">
+        <div class="dest-header">
+          <div class="dest-icon card-paris" style="background: rgba(201,168,76,0.3)">🇫🇷</div>
+          <div class="dest-meta">
+            <h3>Paris</h3>
+            <div class="dest-dates">Dec 29 – Jan 2</div>
+          </div>
+          <div class="dest-nights">5 nights<br><small style="opacity:0.5">Les Patios du Marais 1</small></div>
+        </div>
+      </div>
+      <div class="dest-card" style="background: linear-gradient(135deg, rgba(45,106,79,0.15), rgba(255,255,255,0.03))">
+        <div class="dest-header">
+          <div class="dest-icon card-bruges" style="background: rgba(45,106,79,0.3)">🇧🇪</div>
+          <div class="dest-meta">
+            <h3>Bruges</h3>
+            <div class="dest-dates">Jan 3–5</div>
+          </div>
+          <div class="dest-nights">3 nights<br><small style="opacity:0.5">TBC</small></div>
+        </div>
+      </div>
+      <div class="dest-card" style="background: linear-gradient(135deg, rgba(192,57,43,0.15), rgba(255,255,255,0.03))">
+        <div class="dest-header">
+          <div class="dest-icon card-london" style="background: rgba(192,57,43,0.3)">🇬🇧</div>
+          <div class="dest-meta">
+            <h3>London</h3>
+            <div class="dest-dates">Jan 6–14</div>
+          </div>
+          <div class="dest-nights">9 nights<br><small style="opacity:0.5">Leah & Sam's</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ITINERARY -->
+  <section id="itinerary">
+    <p class="trip-label">Day by Day</p>
+    <h2 class="section-title">Full Itinerary</h2>
+    <div class="divider"></div>
+
+    <div class="dest-grid">
+
+      <!-- STOCKHOLM -->
+      <div class="dest-card card-stockholm">
+        <div class="dest-header">
+          <div class="dest-icon" style="background: rgba(44,95,138,0.3)">🇸🇪</div>
+          <div class="dest-meta">
+            <h3>Stockholm</h3>
+            <div class="dest-dates">Dec 14–16 · 2 nights</div>
+          </div>
+        </div>
+        <div class="dest-body">
+          <div class="day-list">
+            <div class="day-row">
+              <span class="day-label">Mon 14</span>
+              <div class="day-activities">
+                <div class="transport-badge">✈️ Depart Perth 4:35pm</div>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-label">Tue 15</span>
+              <div class="day-activities">
+                <div class="transport-badge">✈️ Arrive Stockholm 6:45am</div>
+                <span class="activity-tag">🚶 Check in + gentle walk</span>
+                <span class="activity-tag">🏘️ Gamla Stan (Old Town)</span>
+                <span class="activity-tag">🎄 Christmas market</span>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-label">Wed 16</span>
+              <div class="day-activities">
+                <span class="activity-tag">⛵ Vasa Museum</span>
+                <span class="activity-tag">🌿 Skansen Open-Air Museum</span>
+                <span class="activity-tag">☕ Fika café stop</span>
+              </div>
+            </div>
+          </div>
+          <div class="stay-info">🏨 <span>STF Zinkensdamm Hostel</span> · Family-friendly hostel on Södermalm island</div>
+        </div>
+      </div>
+
+      <!-- KIRUNA -->
+      <div class="dest-card card-kiruna">
+        <div class="dest-header">
+          <div class="dest-icon" style="background: rgba(45,106,79,0.3)">❄️</div>
+          <div class="dest-meta">
+            <h3>Kiruna</h3>
+            <div class="dest-dates">Dec 17–19 · 3 nights · Arctic Circle</div>
+          </div>
+        </div>
+        <div class="dest-body">
+          <div class="day-list">
+            <div class="day-row">
+              <span class="day-label">Thu 17</span>
+              <div class="day-activities">
+                <div class="transport-badge">✈️ Stockholm → Kiruna 11:55am (1h 40m)</div>
+                <span class="activity-tag">🌌 Evening Northern Lights tour</span>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-label">Fri 18</span>
+              <div class="day-activities">
+                <span class="activity-tag">🐕 Dog sledding tour</span>
+                <span class="activity-tag">☃️ Snow play / explore town</span>
+                <span class="activity-tag">🌌 Northern Lights attempt (night)</span>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-label">Sat 19</span>
+              <div class="day-activities">
+                <span class="activity-tag">🏔️ Snowmobile safari</span>
+                <span class="activity-tag">🌿 Sami Cultural Experience</span>
+                <span class="activity-tag">🧊 Visit ICEHOTEL (Jukkasjärvi)</span>
+                <span class="activity-tag">🌌 Northern Lights (night)</span>
+              </div>
+            </div>
+          </div>
+          <div class="stay-info">🏨 <span>STF Malmfältens Folkhögskola</span> · Cosy hostel-style in Kiruna town</div>
+          <div style="margin-top:12px; padding:10px 14px; background: rgba(45,106,79,0.1); border-radius: 8px; font-size: 13px; opacity:0.8">
+            💡 <strong>Kid tip:</strong> Book dog sledding well in advance (Dec sells out). For your 12-year-old, many operators let older kids mush their own sled!
+          </div>
+        </div>
+      </div>
+
+      <!-- COPENHAGEN -->
+      <div class="dest-card card-copenhagen">
+        <div class="dest-header">
+          <div class="dest-icon" style="background: rgba(192,57,43,0.3)">🇩🇰</div>
+          <div class="dest-meta">
+            <h3>Copenhagen</h3>
+            <div class="dest-dates">Dec 20–22 · 3 nights</div>
+          </div>
+        </div>
+        <div class="dest-body">
+          <div class="day-list">
+            <div class="day-row">
+              <span class="day-label">Sun 20</span>
+              <div class="day-activities">
+                <div class="transport-badge">✈️ Kiruna → Copenhagen 3:10pm (2h 20m)</div>
+                <span class="activity-tag">🎡 Evening at Tivoli Gardens</span>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-label">Mon 21</span>
+              <div class="day-activities">
+                <span class="activity-tag">⚓ Nyhavn harbour walk</span>
+                <span class="activity-tag">🍕 Street food market (Reffen or Torvehallerne)</span>
+                <span class="activity-tag">🚤 Canal stroll</span>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-label">Tue 22</span>
+              <div class="day-activities">
+                <span class="activity-tag">🚲 Bike ride / walking tour</span>
+                <span class="activity-tag">🏰 Rosenborg Castle</span>
+                <span class="activity-tag">🛍️ Strøget shopping street</span>
+              </div>
+            </div>
+          </div>
+          <div class="stay-info">🏨 <span>Danhostel Copenhagen City & Apartments</span> · Great family rooms, central location</div>
+        </div>
+      </div>
+
+      <!-- MUNICH -->
+      <div class="dest-card card-munich">
+        <div class="dest-header">
+          <div class="dest-icon" style="background: rgba(139,69,19,0.3)">🇩🇪</div>
+          <div class="dest-meta">
+            <h3>Munich</h3>
+            <div class="dest-dates">Dec 23–25 · 3 nights · Christmas!</div>
+          </div>
+        </div>
+        <div class="dest-body">
+          <div class="day-list">
+            <div class="day-row">
+              <span class="day-label">Wed 23</span>
+              <div class="day-activities">
+                <div class="transport-badge">✈️ Copenhagen → Munich 8:55am (1h 35m)</div>
+                <span class="activity-tag">🌆 Evening old town walk</span>
+                <span class="activity-tag">🎄 Christmas markets (may close early eve)</span>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-label">Thu 24</span>
+              <div class="day-activities">
+                <span class="activity-tag">🏛️ Marienplatz & Glockenspiel</span>
+                <span class="activity-tag">🎄 Christmas Eve dinner</span>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-label">Fri 25</span>
+              <div class="day-activities">
+                <span class="activity-tag">🌳 English Garden walk</span>
+                <span class="activity-tag">😌 Easy sightseeing, relaxed family day</span>
+              </div>
+            </div>
+          </div>
+          <div class="stay-info">🏨 <span>Premier Inn München City Zentrum</span> · Reliable, great location near the old town</div>
+          <div style="margin-top:12px; padding:10px 14px; background: rgba(139,69,19,0.1); border-radius: 8px; font-size: 13px; opacity:0.8">
+            💡 Note: Most Munich Christmas markets close Dec 24. Go in the morning on the 24th for last-day magic! The Viktualienmarkt often stays open later.
+          </div>
+        </div>
+      </div>
+
+      <!-- INNSBRUCK -->
+      <div class="dest-card card-innsbruck">
+        <div class="dest-header">
+          <div class="dest-icon" style="background: rgba(107,58,140,0.3)">🎿</div>
+          <div class="dest-meta">
+            <h3>Innsbruck</h3>
+            <div class="dest-dates">Dec 26–28 · 3 nights · Ski time!</div>
+          </div>
+        </div>
+        <div class="dest-body">
+          <div class="day-list">
+            <div class="day-row">
+              <span class="day-label">Sat 26</span>
+              <div class="day-activities">
+                <div class="transport-badge">🚆 Munich → Innsbruck ~2h (direct DB train)</div>
+                <span class="activity-tag">🏘️ Check-in + old town explore</span>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-label">Sun 27</span>
+              <div class="day-activities">
+                <span class="activity-tag">⛷️ Ski Day 1 – Axamer Lizum</span>
+                <span class="activity-tag">🎿 Ski lessons for wife & daughter</span>
+                <span class="activity-tag">🏂 You snowboard!</span>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-label">Mon 28</span>
+              <div class="day-activities">
+                <span class="activity-tag">⛷️ Ski Day 2 – beginner runs together</span>
+                <span class="activity-tag">🛷 Optional tubing / snow fun</span>
+              </div>
+            </div>
+          </div>
+          <div class="stay-info">🏨 <span>Accommodation TBC</span> · Look at Hotel Goldener Adler or Nendl's Hotel for central Innsbruck</div>
+          <div style="margin-top:12px; padding:10px 14px; background: rgba(107,58,140,0.1); border-radius: 8px; font-size: 13px; opacity:0.8">
+            💡 Axamer Lizum is perfect for mixed-ability families. Ski hire available on the mountain. Book lessons in advance for Dec 27 — post-Christmas is busy!
+          </div>
+        </div>
+      </div>
+
+      <!-- PARIS -->
+      <div class="dest-card card-paris">
+        <div class="dest-header">
+          <div class="dest-icon" style="background: rgba(201,168,76,0.3)">🇫🇷</div>
+          <div class="dest-meta">
+            <h3>Paris</h3>
+            <div class="dest-dates">Dec 29 – Jan 2 · 5 nights · NYE! 🎉</div>
+          </div>
+        </div>
+        <div class="dest-body">
+          <div class="day-list">
+            <div class="day-row">
+              <span class="day-label">Tue 29</span>
+              <div class="day-activities">
+                <div class="transport-badge">🚆 Innsbruck → Paris ~6.5h (via München)</div>
+                <span class="activity-tag">🌊 Evening Seine walk</span>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-label">Wed 30</span>
+              <div class="day-activities">
+                <span class="activity-tag">🗼 Eiffel Tower</span>
+                <span class="activity-tag">⛪ Notre Dame Cathedral</span>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-label">Thu 31</span>
+              <div class="day-activities">
+                <span class="activity-tag">🎆 NYE on Champs-Élysées</span>
+                <span class="activity-tag">🥂 Midnight fireworks</span>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-label">Fri 1 Jan</span>
+              <div class="day-activities">
+                <span class="activity-tag">😴 Sleep in!</span>
+                <span class="activity-tag">☕ Café hopping</span>
+                <span class="activity-tag">🏘️ Walk Montmartre</span>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-label">Sat 2</span>
+              <div class="day-activities">
+                <span class="activity-tag">🏛️ Louvre Museum (morning)</span>
+                <span class="activity-tag">🌿 Tuileries Gardens</span>
+                <span class="activity-tag">🛍️ Shopping</span>
+              </div>
+            </div>
+          </div>
+          <div class="stay-info">🏨 <span>Les Patios du Marais 1</span> · Charming apartments in Le Marais, perfect for a family</div>
+          <div style="margin-top:12px; padding:10px 14px; background: rgba(201,168,76,0.1); border-radius: 8px; font-size: 13px; opacity:0.8">
+            💡 NYE tip: Champs-Élysées is free and amazing. Arrive by 9pm to get a good spot near the Arc de Triomphe. The metro runs all night on NYE!
+          </div>
+        </div>
+      </div>
+
+      <!-- BRUGES -->
+      <div class="dest-card card-bruges">
+        <div class="dest-header">
+          <div class="dest-icon" style="background: rgba(45,106,79,0.3)">🇧🇪</div>
+          <div class="dest-meta">
+            <h3>Bruges</h3>
+            <div class="dest-dates">Jan 3–5 · 3 nights</div>
+          </div>
+        </div>
+        <div class="dest-body">
+          <div class="day-list">
+            <div class="day-row">
+              <span class="day-label">Sun 3</span>
+              <div class="day-activities">
+                <div class="transport-badge">🚆 Paris → Bruges ~2.5h (Thalys + IC)</div>
+                <span class="activity-tag">🌉 Evening canal walk</span>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-label">Mon 4</span>
+              <div class="day-activities">
+                <span class="activity-tag">🏛️ Market square (Markt)</span>
+                <span class="activity-tag">🔔 Belfry tower climb</span>
+                <span class="activity-tag">🍫 Hot chocolate stops everywhere</span>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-label">Tue 5</span>
+              <div class="day-activities">
+                <span class="activity-tag">🚤 Canal boat ride</span>
+                <span class="activity-tag">🍫 Chocolate shops</span>
+                <span class="activity-tag">😌 Slow, relaxed day</span>
+              </div>
+            </div>
+          </div>
+          <div class="stay-info">🏨 <span>Accommodation TBC</span> · Consider Hotel Jan Brito or B&B in the centre</div>
+        </div>
+      </div>
+
+      <!-- LONDON -->
+      <div class="dest-card card-london">
+        <div class="dest-header">
+          <div class="dest-icon" style="background: rgba(192,57,43,0.3)">🇬🇧</div>
+          <div class="dest-meta">
+            <h3>London</h3>
+            <div class="dest-dates">Jan 6–14 · 9 nights</div>
+          </div>
+        </div>
+        <div class="dest-body">
+          <div class="day-list">
+            <div class="day-row">
+              <span class="day-label">Wed 6</span>
+              <div class="day-activities">
+                <div class="transport-badge">🚆 Bruges → London ~3.5h (Eurostar via Brussels)</div>
+                <span class="activity-tag">🍺 Evening pub meal</span>
+                <span class="activity-tag">🌉 Walk along the Thames</span>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-label">Thu 7</span>
+              <div class="day-activities">
+                <span class="activity-tag">🗼 Tower of London</span>
+                <span class="activity-tag">🌉 Tower Bridge</span>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-label">Fri 8</span>
+              <div class="day-activities">
+                <span class="activity-tag">🏛️ British Museum</span>
+                <span class="activity-tag">🎪 Covent Garden</span>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-label">Sat 9</span>
+              <div class="day-activities">
+                <span class="activity-tag">🏰 Buckingham Palace</span>
+                <span class="activity-tag">🌳 Hyde Park walk</span>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-label">Sun 10</span>
+              <div class="day-activities">
+                <span class="activity-tag">🎓 Day trip to Oxford</span>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-label">Mon 11</span>
+              <div class="day-activities">
+                <span class="activity-tag">🛍️ Oxford Street shopping</span>
+                <span class="activity-tag">🎭 West End show</span>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-label">Tue 12–13</span>
+              <div class="day-activities">
+                <span class="activity-tag">🛁 Day trip to Bath (Roman Baths!)</span>
+                <span class="activity-tag">Free time with Leah & Sam</span>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-label">Thu 14</span>
+              <div class="day-activities">
+                <div class="transport-badge">✈️ Fly Home to Perth</div>
+              </div>
+            </div>
+          </div>
+          <div class="stay-info">🏨 <span>Leah & Sam's</span> · No accommodation cost — lucky you!</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOD -->
+  <section id="food">
+    <p class="trip-label">Eat Your Way Across Europe</p>
+    <h2 class="section-title">Food & Drink Highlights</h2>
+    <div class="divider"></div>
+
+    <div class="food-grid">
+      <div class="food-card">
+        <h3>🇸🇪 Stockholm</h3>
+        <div class="food-city">Sweden</div>
+        <ul class="food-list">
+          <li><span class="food-emoji">☕</span><div><strong>Fika</strong><div class="food-detail">Coffee + cinnamon bun (kanelbulle) — a Swedish institution. Try Café Saturnus for legendary buns.</div></div></li>
+          <li><span class="food-emoji">🥣</span><div><strong>Swedish Meatballs</strong><div class="food-detail">Authentic version at Meatballs for the People (Nytorget). Much better than IKEA!</div></div></li>
+          <li><span class="food-emoji">🐟</span><div><strong>Smörgåsbord</strong><div class="food-detail">Traditional Swedish spread with herring, gravlax, and rye bread at Operakällaren.</div></div></li>
+          <li><span class="food-emoji">🍺</span><div><strong>Glögg</strong><div class="food-detail">Hot spiced mulled wine at the Christmas markets — get a non-alcoholic version for your 12-year-old.</div></div></li>
+        </ul>
+      </div>
+
+      <div class="food-card">
+        <h3>❄️ Kiruna</h3>
+        <div class="food-city">Swedish Lapland</div>
+        <ul class="food-list">
+          <li><span class="food-emoji">🦌</span><div><strong>Reindeer</strong><div class="food-detail">Try reindeer stew or smoked reindeer — it's a Sami staple and delicious. Available at most local restaurants.</div></div></li>
+          <li><span class="food-emoji">🫐</span><div><strong>Cloudberry jam</strong><div class="food-detail">Golden Arctic berries — try on pancakes or with cheese. Unique to the region.</div></div></li>
+          <li><span class="food-emoji">🍵</span><div><strong>Hot lingonberry juice</strong><div class="food-detail">After dog sledding, this warming drink is perfect for all ages.</div></div></li>
+        </ul>
+      </div>
+
+      <div class="food-card">
+        <h3>🇩🇰 Copenhagen</h3>
+        <div class="food-city">Denmark</div>
+        <ul class="food-list">
+          <li><span class="food-emoji">🥐</span><div><strong>Danish Pastry</strong><div class="food-detail">Try a real wienerbrød at Hart Bageri (owned by a Noma chef). Worth the queue.</div></div></li>
+          <li><span class="food-emoji">🌭</span><div><strong>Pølser (Hot dogs)</strong><div class="food-detail">Danish street hot dogs from a pølsevogn cart. Kids love them, and they're cheap!</div></div></li>
+          <li><span class="food-emoji">🍻</span><div><strong>Torvehallerne Market</strong><div class="food-detail">Fantastic covered food market — great for a lunch with lots of variety. Easy family option.</div></div></li>
+          <li><span class="food-emoji">🦞</span><div><strong>Smørrebrød</strong><div class="food-detail">Open-faced rye bread sandwiches with elaborate toppings. Try Aamanns for a modern take.</div></div></li>
+        </ul>
+      </div>
+
+      <div class="food-card">
+        <h3>🇩🇪 Munich</h3>
+        <div class="food-city">Bavaria · Christmas Eve</div>
+        <ul class="food-list">
+          <li><span class="food-emoji">🥨</span><div><strong>Brezel</strong><div class="food-detail">Soft pretzels from any bakery — best eaten warm with butter. Perfect market snack.</div></div></li>
+          <li><span class="food-emoji">🐷</span><div><strong>Schweinshaxe</strong><div class="food-detail">Crispy pork knuckle — a Bavarian classic. Try at Haxnbauer or Augustiner-Keller.</div></div></li>
+          <li><span class="food-emoji">🌭</span><div><strong>Weisswurst</strong><div class="food-detail">White sausage with sweet mustard — a Christmas morning tradition. Pair with Weissbier.</div></div></li>
+          <li><span class="food-emoji">🎂</span><div><strong>Christmas Eve Dinner</strong><div class="food-detail">Book in advance! Spatenhaus an der Oper is great for a festive Bavarian Christmas dinner.</div></div></li>
+        </ul>
+      </div>
+
+      <div class="food-card">
+        <h3>🎿 Innsbruck</h3>
+        <div class="food-city">Austria · Alps</div>
+        <ul class="food-list">
+          <li><span class="food-emoji">🧀</span><div><strong>Käsespätzle</strong><div class="food-detail">Alpine mac-and-cheese — a total kid favourite. Available at every mountain hut and tavern.</div></div></li>
+          <li><span class="food-emoji">🍩</span><div><strong>Kaiserschmarrn</strong><div class="food-detail">Fluffy shredded pancakes with plum sauce — the best après-ski dessert. Try at a mountain hut.</div></div></li>
+          <li><span class="food-emoji">🍵</span><div><strong>Glühwein (Punsch for kids)</strong><div class="food-detail">Warm punch at ski-slope bars. Kids get the non-alcoholic Kinderpunsch.</div></div></li>
+        </ul>
+      </div>
+
+      <div class="food-card">
+        <h3>🇫🇷 Paris</h3>
+        <div class="food-city">France · NYE</div>
+        <ul class="food-list">
+          <li><span class="food-emoji">🥐</span><div><strong>Croissants & Pain au chocolat</strong><div class="food-detail">Go to Du Pain et des Idées in Le Marais — possibly the best in Paris, and near your hotel!</div></div></li>
+          <li><span class="food-emoji">🧅</span><div><strong>French Onion Soup</strong><div class="food-detail">Warming winter classic — try at Au Pied de Cochon (open 24h, great for NYE after midnight).</div></div></li>
+          <li><span class="food-emoji">🍫</span><div><strong>Angelina hot chocolate</strong><div class="food-detail">The thick African hot chocolate at Angelina on Rue de Rivoli is legendary. A must for the family.</div></div></li>
+          <li><span class="food-emoji">🎆</span><div><strong>NYE Dinner</strong><div class="food-detail">Book at least 2 months ahead. L'Ami Jean in the 7th is excellent value for a festive meal.</div></div></li>
+        </ul>
+      </div>
+
+      <div class="food-card">
+        <h3>🇧🇪 Bruges</h3>
+        <div class="food-city">Belgium</div>
+        <ul class="food-list">
+          <li><span class="food-emoji">🍺</span><div><strong>Belgian Beer</strong><div class="food-detail">Try a Bruges Zot at the De Halve Maan Brewery — they also do a family brewery tour!</div></div></li>
+          <li><span class="food-emoji">🍟</span><div><strong>Frites</strong><div class="food-detail">Belgian fries with mayonnaise from Frituur No. 1 near the Belfry. Eat them in a paper cone.</div></div></li>
+          <li><span class="food-emoji">🍫</span><div><strong>Chocolate</strong><div class="food-detail">Visit The Chocolate Line or Dumon for handmade truffles. Your 12-year-old will love picking their own box.</div></div></li>
+          <li><span class="food-emoji">🧇</span><div><strong>Belgian Waffles</strong><div class="food-detail">Liège-style (chewy, caramelised) beats Brussels-style (crispy) in winter. Get them from a street vendor.</div></div></li>
+        </ul>
+      </div>
+
+      <div class="food-card">
+        <h3>🇬🇧 London</h3>
+        <div class="food-city">United Kingdom</div>
+        <ul class="food-list">
+          <li><span class="food-emoji">🐟</span><div><strong>Fish & Chips</strong><div class="food-detail">Rock & Sole Plaice in Covent Garden is a classic. Eat with mushy peas and malt vinegar.</div></div></li>
+          <li><span class="food-emoji">☕</span><div><strong>Full English Breakfast</strong><div class="food-detail">Fuelling up before a big sightseeing day — find a proper "greasy spoon" caff for the full experience.</div></div></li>
+          <li><span class="food-emoji">🎭</span><div><strong>Pre-theatre dinner</strong><div class="food-detail">J. Sheekey near the West End for pre-show dining — book in advance alongside your show tickets.</div></div></li>
+          <li><span class="food-emoji">🍺</span><div><strong>Pub meal</strong><div class="food-detail">A proper British pub with a Sunday roast — The Anchor at Bankside has great views of St. Paul's.</div></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRANSPORT -->
+  <section id="transport">
+    <p class="trip-label">Getting Around</p>
+    <h2 class="section-title">Transport Guide</h2>
+    <div class="divider"></div>
+
+    <div style="margin-bottom: 32px;">
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 16px; color: var(--gold-light)">✈️ Flights</h3>
+      <div class="transport-grid">
+        <div class="transport-card">
+          <div class="transport-icon">✈️</div>
+          <div>
+            <div class="transport-route">Perth → Stockholm</div>
+            <div class="transport-info">Depart Mon 14 Dec 4:35pm · Arrive Tue 15 Dec 6:45am · ~19h with connection</div>
+          </div>
+          <span class="transport-tip">Already booked</span>
+        </div>
+        <div class="transport-card">
+          <div class="transport-icon">✈️</div>
+          <div>
+            <div class="transport-route">Stockholm → Kiruna</div>
+            <div class="transport-info">Thu 17 Dec · 11:55am → 1:35pm · 1h 40m · SAS or BRA Airlines</div>
+          </div>
+          <span class="transport-tip">Book now</span>
+        </div>
+        <div class="transport-card">
+          <div class="transport-icon">✈️</div>
+          <div>
+            <div class="transport-route">Kiruna → Copenhagen</div>
+            <div class="transport-info">Sun 20 Dec · 3:10pm → 5:30pm · 2h 20m · via Stockholm likely</div>
+          </div>
+          <span class="transport-tip">Book now</span>
+        </div>
+        <div class="transport-card">
+          <div class="transport-icon">✈️</div>
+          <div>
+            <div class="transport-route">Copenhagen → Munich</div>
+            <div class="transport-info">Wed 23 Dec · 8:55am → 10:30am · 1h 35m · Lufthansa / SAS</div>
+          </div>
+          <span class="transport-tip">Book now</span>
+        </div>
+        <div class="transport-card">
+          <div class="transport-icon">✈️</div>
+          <div>
+            <div class="transport-route">London → Perth</div>
+            <div class="transport-info">Thu 14 Jan · Time TBC · ~20h with connection</div>
+          </div>
+          <span class="transport-tip">Book now</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 16px; color: var(--gold-light)">🚆 Trains</h3>
+      <div class="transport-grid">
+        <div class="transport-card">
+          <div class="transport-icon">🚆</div>
+          <div>
+            <div class="transport-route">Munich → Innsbruck</div>
+            <div class="transport-info">Sat 26 Dec · ~2h direct · DB/ÖBB trains every 1–2h · ~€30–50pp</div>
+          </div>
+          <span class="transport-tip">Book on DB.de</span>
+        </div>
+        <div class="transport-card">
+          <div class="transport-icon">🚆</div>
+          <div>
+            <div class="transport-route">Innsbruck → Paris</div>
+            <div class="transport-info">Tue 29 Dec · ~6.5–7h via München Hbf · change in Munich · ~€60–120pp</div>
+          </div>
+          <span class="transport-tip">Book on Rail.eu</span>
+        </div>
+        <div class="transport-card">
+          <div class="transport-icon">🚆</div>
+          <div>
+            <div class="transport-route">Paris → Bruges</div>
+            <div class="transport-info">Sun 3 Jan · ~2.5h · Thalys to Brussels then IC train · ~€40–70pp</div>
+          </div>
+          <span class="transport-tip">Book on Thalys.com</span>
+        </div>
+        <div class="transport-card">
+          <div class="transport-icon">🚆</div>
+          <div>
+            <div class="transport-route">Bruges → London (Eurostar)</div>
+            <div class="transport-info">Wed 6 Jan · ~3.5h via Brussels · Eurostar from Brussels Midi · ~€60–120pp</div>
+          </div>
+          <span class="transport-tip">Book on Eurostar.com</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 32px; padding: 24px; background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.2); border-radius: 12px;">
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 12px; color: var(--gold)">💡 Train Booking Tips</h3>
+      <ul style="list-style: none; display: grid; gap: 8px;">
+        <li style="font-size: 14px; opacity: 0.8; display: flex; gap: 10px;"><span>🎫</span> Book European trains 3 months ahead for best prices — especially Christmas/NYE period</li>
+        <li style="font-size: 14px; opacity: 0.8; display: flex; gap: 10px;"><span>👶</span> Children under 15 travel free on most European trains when accompanied by an adult</li>
+        <li style="font-size: 14px; opacity: 0.8; display: flex; gap: 10px;"><span>🇪🇺</span> Consider an Interrail Pass if not already booked — 3 adults (2 adult + 1 youth) for the 5 train legs</li>
+        <li style="font-size: 14px; opacity: 0.8; display: flex; gap: 10px;"><span>💺</span> For long journeys (Innsbruck→Paris), book a seat reservation — mandatory on TGV/ICE</li>
+        <li style="font-size: 14px; opacity: 0.8; display: flex; gap: 10px;"><span>📱</span> Download the Rail Planner app (works offline) and individual operator apps (DB, SNCF, Eurostar)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- BUDGET -->
+  <section id="budget">
+    <p class="trip-label">Estimated Costs</p>
+    <h2 class="section-title">Budget Planner</h2>
+    <div class="divider"></div>
+    <p style="opacity: 0.5; font-size: 13px; margin-bottom: 32px;">All prices in AUD, estimated for 2 adults + 1 child (12). London accommodation is free (staying with friends). Adjust to your style — these are mid-range estimates.</p>
+
+    <div class="budget-section">
+      <div class="budget-card">
+        <h3>✈️ Flights</h3>
+        <div class="budget-row"><span>Perth → Stockholm (return from London)</span><span class="amount">$5,500</span></div>
+        <div class="budget-row"><span>Stockholm → Kiruna (×3)</span><span class="amount">$900</span></div>
+        <div class="budget-row"><span>Kiruna → Copenhagen (×3)</span><span class="amount">$750</span></div>
+        <div class="budget-row"><span>Copenhagen → Munich (×3)</span><span class="amount">$600</span></div>
+        <div class="budget-total"><span>Flights Subtotal</span><span class="amount">~$7,750</span></div>
+      </div>
+
+      <div class="budget-card">
+        <h3>🚆 Trains</h3>
+        <div class="budget-row"><span>Munich → Innsbruck (×3)</span><span class="amount">$200</span></div>
+        <div class="budget-row"><span>Innsbruck → Paris (×3)</span><span class="amount">$450</span></div>
+        <div class="budget-row"><span>Paris → Bruges (×3)</span><span class="amount">$300</span></div>
+        <div class="budget-row"><span>Bruges → London Eurostar (×3)</span><span class="amount">$500</span></div>
+        <div class="budget-total"><span>Trains Subtotal</span><span class="amount">~$1,450</span></div>
+      </div>
+
+      <div class="budget-card">
+        <h3>🏨 Accommodation</h3>
+        <div class="budget-row"><span>Stockholm (2 nights)</span><span class="amount">$280</span></div>
+        <div class="budget-row"><span>Kiruna (3 nights)</span><span class="amount">$480</span></div>
+        <div class="budget-row"><span>Copenhagen (3 nights)</span><span class="amount">$450</span></div>
+        <div class="budget-row"><span>Munich (3 nights)</span><span class="amount">$600</span></div>
+        <div class="budget-row"><span>Innsbruck (3 nights)</span><span class="amount">$550</span></div>
+        <div class="budget-row"><span>Paris (5 nights)</span><span class="amount">$900</span></div>
+        <div class="budget-row"><span>Bruges (3 nights)</span><span class="amount">$420</span></div>
+        <div class="budget-row"><span>London (9 nights — FREE! 🎉)</span><span class="amount">$0</span></div>
+        <div class="budget-total"><span>Accommodation Subtotal</span><span class="amount">~$3,680</span></div>
+      </div>
+
+      <div class="budget-card">
+        <h3>🎡 Activities & Food</h3>
+        <div class="budget-row"><span>Northern Lights tour Kiruna</span><span class="amount">$600</span></div>
+        <div class="budget-row"><span>Dog sledding (×3)</span><span class="amount">$750</span></div>
+        <div class="budget-row"><span>Snowmobile / Sami experience</span><span class="amount">$600</span></div>
+        <div class="budget-row"><span>Ski passes + hire (2 days ×3)</span><span class="amount">$900</span></div>
+        <div class="budget-row"><span>Ski lessons (wife + daughter, 2 days)</span><span class="amount">$500</span></div>
+        <div class="budget-row"><span>Museums & attractions</span><span class="amount">$600</span></div>
+        <div class="budget-row"><span>Food & dining (31 days)</span><span class="amount">$5,500</span></div>
+        <div class="budget-row"><span>West End show London</span><span class="amount">$280</span></div>
+        <div class="budget-row"><span>Local transport / metro</span><span class="amount">$600</span></div>
+        <div class="budget-row"><span>Shopping & souvenirs</span><span class="amount">$800</span></div>
+        <div class="budget-total"><span>Activities + Food Subtotal</span><span class="amount">~$11,130</span></div>
+      </div>
+    </div>
+
+    <div style="margin-top: 24px; padding: 28px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.3); border-radius: 12px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+        <div>
+          <div style="font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold)">~$24,000</div>
+          <div style="opacity: 0.5; font-size: 13px; margin-top: 4px">Estimated Total (AUD) · 2 adults + 1 child</div>
+        </div>
+        <div style="text-align: right; opacity: 0.7; font-size: 14px;">
+          <div>~$775/day total</div>
+          <div>~$258/person/day</div>
+        </div>
+      </div>
+      <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(201,168,76,0.2); font-size: 13px; opacity: 0.6; line-height: 1.7;">
+        💡 Saving tips: Book flights now (Dec is peak season), get an Interrail pass for train flexibility, look for family discount cards in each city (Copenhagen Card, Munich City Card etc.), and pack snacks to reduce cafe costs!
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKING -->
+  <section id="packing">
+    <p class="trip-label">Don't Forget</p>
+    <h2 class="section-title">Packing List</h2>
+    <div class="divider"></div>
+    <p style="opacity:0.5; font-size:13px; margin-bottom:28px;">Click items to check them off as you pack!</p>
+
+    <div class="packing-grid" id="packing-grid">
+      <div class="pack-card">
+        <h3>❄️ Arctic & Cold Weather</h3>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Thermal base layers (top + bottom) ×2 each</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Heavyweight puffer jacket</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Waterproof ski jacket (for Innsbruck)</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Ski pants / waterproof trousers</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Wool hat / beanie (per person)</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Neck gaiter / scarf</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Waterproof gloves (per person)</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Ski goggles</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Merino wool socks ×4 pairs each</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Warm waterproof boots</span></div>
+      </div>
+      <div class="pack-card">
+        <h3>👟 Clothing (City Days)</h3>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Comfortable walking shoes / sneakers</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Smart casual outfit (restaurants/shows)</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Mid-layer fleece or sweater ×2</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Long-sleeve shirts ×4 each</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Jeans / trousers ×2 each</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">NYE outfit (Paris! dress it up a bit)</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Compact umbrella</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Pyjamas / thermals for sleeping</span></div>
+      </div>
+      <div class="pack-card">
+        <h3>💊 Health & Documents</h3>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Passports (valid 6+ months)</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Travel insurance documents</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">European EHIC / travel health cards</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Printed booking confirmations</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Paracetamol / ibuprofen</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Cold & flu tablets</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Hand/face moisturiser (dry winter air)</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Lip balm ×3</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Prescription medications</span></div>
+      </div>
+      <div class="pack-card">
+        <h3>📱 Tech & Extras</h3>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Universal power adapter (EU + UK)</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Portable power bank</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">European SIM or roaming plan</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Camera + spare battery (cold kills batteries!)</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Download offline maps (Google Maps)</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Headphones (long flights & trains)</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Travel neck pillow</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Kids entertainment for flights</span></div>
+        <div class="pack-item" onclick="toggle(this)"><div class="pack-check">✓</div><span class="pack-text">Small day backpack</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPS -->
+  <section id="tips">
+    <p class="trip-label">Expert Advice</p>
+    <h2 class="section-title">Top Tips for Your Trip</h2>
+    <div class="divider"></div>
+
+    <div class="tips-grid">
+      <div class="tip-card">
+        <h3>🌌 Northern Lights</h3>
+        <p>Kiruna Dec 17–19 is excellent timing. The lights are best seen between 10pm–2am, away from light pollution. Book a guided tour for the best experience — guides know the best viewing spots. Clear skies are key, so have a backup night planned. Aurora apps like "My Aurora Forecast" help track activity.</p>
+      </div>
+      <div class="tip-card">
+        <h3>👧 Travelling with a 12-Year-Old</h3>
+        <p>Your child is at a great age for this trip — old enough to enjoy museums and culture, young enough to be wowed by snow and lights. Involve them in planning; let them pick one activity per city. Give them their own small spending budget for souvenirs — builds independence. Pack a travel journal for them.</p>
+      </div>
+      <div class="tip-card">
+        <h3>💳 Money & Cards</h3>
+        <p>Scandinavia is nearly cashless — cards everywhere. Germany and Austria still use some cash (carry €50–100). Paris accepts cards widely. Bruges and London: cards fine. Get a Wise or Revolut travel card to avoid foreign transaction fees — could save you $300+ over the trip.</p>
+      </div>
+      <div class="tip-card">
+        <h3>🎄 Christmas in Europe</h3>
+        <p>Many shops and restaurants close Dec 24–26, especially in Munich and Innsbruck. Stock up on snacks the day before. Christmas markets in Stockholm and Copenhagen close Dec 23–24. The Tivoli Gardens in Copenhagen is magical at Christmas — try to go on the evening of Dec 20 upon arrival.</p>
+      </div>
+      <div class="tip-card">
+        <h3>🚆 Train Travel Tips</h3>
+        <p>Book trains 3 months in advance for Christmas period pricing. Seat reservations are mandatory on TGV (France) and some ICE (Germany) trains. Kids under 15 often travel free with a paying adult on many European networks. Always have a digital and printed backup of your tickets.</p>
+      </div>
+      <div class="tip-card">
+        <h3>❄️ Cold Weather Prep</h3>
+        <p>Kiruna in December averages -15°C to -20°C. Dress in layers and cover all exposed skin. Hand warmers are your best friend for night photography and Northern Lights tours. Batteries drain fast in cold — keep phones and cameras in inner pockets. Sunscreen still needed (UV reflects off snow).</p>
+      </div>
+      <div class="tip-card">
+        <h3>🎉 New Year's Eve in Paris</h3>
+        <p>The Champs-Élysées NYE is free and spectacular. Arrive well before midnight — by 9pm for a decent position near the Arc de Triomphe. The metro runs all night NYE for free. Restaurants charge premium NYE menus — book 2–3 months ahead. Consider having dinner early and joining the street party later.</p>
+      </div>
+      <div class="tip-card">
+        <h3>🎿 Skiing Tips for Beginners</h3>
+        <p>Axamer Lizum is a great choice for mixed-ability families. Book lessons in advance (post-Christmas is busy). Hire equipment at the resort — cheaper than dragging gear from Australia. Start with a 2-hour group lesson for beginners, then upgrade to private if confidence grows. Helmets are compulsory for under-14s in Austria.</p>
+      </div>
+      <div class="tip-card">
+        <h3>📸 Photography</h3>
+        <p>Winter light in Scandinavia is beautiful — golden hour lasts hours at this latitude. For Northern Lights: use a tripod, ISO 1600–3200, aperture f/2.8, shutter 10–15 seconds. In cities, early morning is magical before crowds arrive — especially Bruges canals and Paris streets. Gamla Stan in Stockholm looks incredible with snow.</p>
+      </div>
+      <div class="tip-card">
+        <h3>🏥 Health & Safety</h3>
+        <p>EU countries are covered by EHIC (if you hold one) but don't rely on it — get comprehensive travel insurance. In Kiruna, frostbite can occur within 30 minutes at -20°C without proper gear. Keep travel insurance documents on your phone and email. Emergency number throughout Europe: 112.</p>
+      </div>
+      <div class="tip-card">
+        <h3>🗺️ City Cards</h3>
+        <p>Consider: Stockholm City Card (museums + transport), Copenhagen Card (80+ attractions + metro), Munich City Card (transport only). London is pricey for attractions — book Tower of London and London Eye in advance online for 10–15% discount. British Museum and National Gallery are free!</p>
+      </div>
+      <div class="tip-card">
+        <h3>🌐 Language Tips</h3>
+        <p>Swedes, Danes, and Dutch all speak excellent English. In Germany and Austria, basic German phrases are appreciated. In Paris, always try "Bonjour!" first — the French warm up considerably. In London, obviously no language barrier, but "please" and "cheers" go a long way. Download Google Translate offline packs for all countries.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>✦ EUROPE WINTER 2026–27 ✦ PERTH TO THE WORLD ✦</p>
+  <p style="margin-top: 8px;">2 adults · 1 child (12) · 31 nights · 8 cities</p>
+</footer>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+    window.scrollTo({ top: document.querySelector('nav').offsetTop - 1, behavior: 'smooth' });
+  }
+
+  function toggle(el) {
+    el.classList.toggle('packed');
+  }
+</script>
+</body>
+</html>
